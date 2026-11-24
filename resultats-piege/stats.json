@@ -1,0 +1,27 @@
+{
+  "batch": {
+    "count": 1,
+    "cpu_avg": 16.0,
+    "ram_gb": 64
+  },
+  "cache": {
+    "count": 1,
+    "cpu_avg": 78.0,
+    "ram_gb": 64
+  },
+  "db": {
+    "count": 3,
+    "cpu_avg": 49.0,
+    "ram_gb": 84
+  },
+  "monitoring": {
+    "count": 2,
+    "cpu_avg": 30.0,
+    "ram_gb": 48
+  },
+  "web": {
+    "count": 3,
+    "cpu_avg": 19.7,
+    "ram_gb": 112
+  }
+}

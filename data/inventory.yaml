@@ -1,0 +1,16 @@
+# Inventaire CloudNova — utilisé par opstoolkit inventory / health / ssh
+environments:
+  dev:
+    servers:
+      - {name: web-dev, host: 127.0.0.1, role: web, ports: [8081]}
+      - {name: cache-dev, host: 127.0.0.1, role: cache, ports: [6379]}
+  recette:
+    servers:
+      - {name: api-recette, host: 127.0.0.1, role: api, ports: [8000]}
+      - {name: s3-recette, host: 127.0.0.1, role: storage, ports: [9000]}
+  prod:
+    servers:
+      - {name: web-prod, host: 127.0.0.1, role: web, ports: [8081]}
+      - {name: db-prod, host: 127.0.0.1, role: db, ports: [5432]}
+      - {name: app01, host: 127.0.0.1, role: app, ports: [2221], ssh_port: 2221}
+      - {name: app02, host: 127.0.0.1, role: app, ports: [2222], ssh_port: 2222}

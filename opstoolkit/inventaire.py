@@ -46,5 +46,7 @@ print("Par rôle :", count_by_role(servers))
 print("Éteints :", down_servers(servers))
 print("Surchargés :", overloaded(servers))
 
-#print(*sorted(servers, key=lambda s: s["cpu"], reverse=True), sep='\n', )
 
+
+#print(*sorted(servers, key=lambda s: s["cpu"], reverse=True), sep='\n', )
+####

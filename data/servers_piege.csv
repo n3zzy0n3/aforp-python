@@ -1,0 +1,15 @@
+name,ip,role,os,cpu,ram_gb,up
+web01,10.0.0.1,web,Debian 12,45,64,true
+db02,10.0.1.2,db,Debian 12,33,64,false
+cache03,10.0.2.3,cache,Rocky 9,78,64,true
+batch04,10.0.3.4,batch,Rocky 9,N/A,4,false
+monitoring05,10.0.4.5,monitoring,Debian 12,19,16,true
+web06,10.0.0.6,web,Rocky 9,6,32,true
+
+db07,10.0.1.7,db,Ubuntu 24.04,55,16,true
+cache08,10.0.2.8,cache,RHEL 9,53,,true
+batch09,10.0.3.9,batch,RHEL 9,16,64,true
+monitoring10,10.0.4.10,monitoring,RHEL 9,41,32,true
+web11,10.0.0.11,web,RHEL 9,8,16,true
+db12,10.0.1.12,db,Rocky 9,59,4,true
+orphan99,10.0.9.99,web
