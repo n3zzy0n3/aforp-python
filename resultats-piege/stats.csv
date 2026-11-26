@@ -1,6 +1,0 @@
-role,count,cpu_avg,ram_gb
-batch,1,16.0,64
-cache,1,78.0,64
-db,3,49.0,84
-monitoring,2,30.0,48
-web,3,19.7,112

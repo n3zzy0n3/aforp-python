@@ -1,0 +1,5 @@
+[
+  {"name": "web01", "ip": "10.0.0.11", "role": "web", "cpu": 72, "up": true},
+  {"name": "web02", "ip": "10.0.0.12", "role": "web", "up": true},
+  {"name": "db01", "ip": "10.0.0.21", "role": "db", "cpu": 40, "up": false}
+]
