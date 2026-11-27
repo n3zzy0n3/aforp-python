@@ -29,12 +29,14 @@ def test_cible_flaky_ko_dans_rapport(tmp_path):
     f.write_text(
         "targets:\n"
         "  - {name: api-flaky, host: 127.0.0.1, port: 8000,"
-        " health_url: \"http://127.0.0.1:8000/flaky\"}\n",
+        ' health_url: "http://127.0.0.1:8000/flaky"}\n',
         encoding="utf-8",
     )
     rapport = tmp_path / "rapport.json"
-    with patch("watchdog.check_port", return_value=(True, 3)), \
-         patch("watchdog.requests.get", return_value=Mock(status_code=500)):
+    with (
+        patch("watchdog.check_port", return_value=(True, 3)),
+        patch("watchdog.requests.get", return_value=Mock(status_code=500)),
+    ):
         code = watchdog.main([str(f), "-o", str(rapport)])
     assert code == 1
     assert json.loads(rapport.read_text()) == [{"name": "api-flaky", "ok": False, "ms": 3}]

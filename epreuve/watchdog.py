@@ -25,17 +25,17 @@ def load_targets(path):
         raise ValueError(f"YAML illisible : {e}") from e
 
     if not isinstance(data, dict) or not isinstance(data.get("targets"), list):
-        raise ValueError("cle targets absente ou pas une liste")
+        raise ValueError("cle targets absente ou pas une liste")  # noqa: TRY004
 
     targets = data["targets"]
     for i, t in enumerate(targets):
         if not isinstance(t, dict):
-            raise ValueError(f"cible numero {i + 1} invalide")
+            raise ValueError(f"cible numero {i + 1} invalide")  # noqa: TRY004
         for key in ("name", "host", "port"):
             if key not in t or t[key] in (None, ""):
-                raise ValueError(f"cible numero {i + 1} : champ {key} manquant")
+                raise ValueError(f"cible numero {i + 1} : champ {key} manquant")  # noqa: TRY004
         if not isinstance(t["port"], int):
-            raise ValueError(f"cible numero {i + 1} : port doit etre un entier")
+            raise ValueError(f"cible numero {i + 1} : port doit etre un entier")  # noqa: TRY004
     return targets
 
 
@@ -62,8 +62,7 @@ def check_http(url, timeout=2.0):
 def check_target(target):
     # Combine le test du port et le test HTTP ; renvoie l entree du rapport.
     ok, ms = check_port(target["host"], target["port"])
-    logger.debug("%s : port %s:%s -> %s (%s ms)",
-                 target["name"], target["host"], target["port"], ok, ms)
+    logger.debug("%s : port %s:%s -> %s (%s ms)", target["name"], target["host"], target["port"], ok, ms)
     if ok and target.get("health_url"):
         ok = check_http(target["health_url"])
         logger.debug("%s : GET %s -> %s", target["name"], target["health_url"], ok)
@@ -73,14 +72,18 @@ def check_target(target):
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Verifie des services et ecrit un rapport JSON.")
     parser.add_argument("fichier", help="fichier YAML des cibles")
-    parser.add_argument("-o", "--output", default="watchdog-report.json",
-                        help="chemin du rapport (defaut : watchdog-report.json)")
+    parser.add_argument(
+        "-o",
+        "--output",
+        default="watchdog-report.json",
+        help="chemin du rapport (defaut : watchdog-report.json)",
+    )
     parser.add_argument("-v", "--verbose", action="store_true", help="niveau DEBUG")
     args = parser.parse_args(argv)  # argparse fait sys.exit(2) si argument manquant
 
-    logging.basicConfig(format="%(levelname)s %(message)s",
-                        level=logging.DEBUG if args.verbose else logging.INFO,
-                        force=True)
+    logging.basicConfig(
+        format="%(levelname)s %(message)s", level=logging.DEBUG if args.verbose else logging.INFO, force=True
+    )
 
     try:
         targets = load_targets(args.fichier)
