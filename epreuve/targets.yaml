@@ -1,0 +1,8 @@
+# Cibles de l'épreuve de sortie (watchdog.py). Avant l'épreuve : docker stop lab-db
+targets:
+  - {name: site-web, host: 127.0.0.1, port: 8081, health_url: "http://127.0.0.1:8081/"}
+  - {name: api-statut, host: 127.0.0.1, port: 8000, health_url: "http://127.0.0.1:8000/health"}
+  - {name: api-flaky, host: 127.0.0.1, port: 8000, health_url: "http://127.0.0.1:8000/flaky"}
+  - {name: cache, host: 127.0.0.1, port: 6379}
+  - {name: base-clients, host: 127.0.0.1, port: 5432}
+
